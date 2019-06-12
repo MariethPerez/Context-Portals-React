@@ -1,7 +1,12 @@
 import React from "react";
-import FormPeer from "./FormPeer";
-import Result from "./Result";
+//import FormPeer from "./FormPeer";
+//import Result from "./Result";
 import { Provider as PeerContextProvider } from "./context/peerContext";
+import Spinner from "./Spinner";
+
+//this constants is for LAzzy. This is instead of //import FormPeer from "./FormPeer";
+const FormPeer = React.lazy(() => import("./FormPeer"));
+const Result = React.lazy(() => import("./Result"));
 
 function FormStep() {
   const [peers, setPeers] = React.useState([]);
@@ -15,8 +20,10 @@ function FormStep() {
   return (
     <PeerContextProvider value={peers}>
       <div className="steps">
-        <h1>Student {step + 1}</h1>
-        {step < 3 ? <FormPeer addPeer={addPeer} step={step} /> : <Result />}
+        <React.Suspense fallback={<Spinner />}>
+          <h1>Student {step + 1}</h1>
+          {step < 3 ? <FormPeer addPeer={addPeer} step={step} /> : <Result />}
+        </React.Suspense>
       </div>
     </PeerContextProvider>
   );
