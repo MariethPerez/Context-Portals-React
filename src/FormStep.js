@@ -20,7 +20,7 @@ function FormStep() {
         <PeerContextProvider value={peers}>
           <div className="steps">
             <h1>Student {step + 1}</h1>
-            {step < 3 ? <FormPeer addPeer={addPeer} /> : <Result />}
+            {step < 3 ? <FormPeer /> : <Result />}
           </div>
         </PeerContextProvider>
       </StepContextProvider>
