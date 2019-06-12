@@ -1,31 +1,36 @@
-import React from 'react';
+import React from "react";
+import StepContext from "./context/stepPeerContext";
+import AddPeerContext from "./contexts/AddPeerContext";
 
-function FormPeer({ addPeer, step }) {
+function FormPeer() {
+  const step = React.useContext(StepContext);
+  const addPeer = React.useContext(AddPeerContext);
+
   const [fields, setFields] = React.useState({
-    name: '',
-    q1: '',
-    q2: '',
-    q3: '',
-    'q4-a': '',
-    'q4-b': '',
-    q5: '',
-    q6: '',
-    q7: ''
+    name: "",
+    q1: "",
+    q2: "",
+    q3: "",
+    "q4-a": "",
+    "q4-b": "",
+    q5: "",
+    q6: "",
+    q7: ""
   });
 
   function handleSubmit(event) {
     event.preventDefault();
     addPeer(fields);
     setFields({
-      name: '',
-      q1: '',
-      q2: '',
-      q3: '',
-      'q4-a': '',
-      'q4-b': '',
-      q5: '',
-      q6: '',
-      q7: ''
+      name: "",
+      q1: "",
+      q2: "",
+      q3: "",
+      "q4-a": "",
+      "q4-b": "",
+      q5: "",
+      q6: "",
+      q7: ""
     });
   }
 
@@ -196,7 +201,7 @@ function FormPeer({ addPeer, step }) {
         />
       </label>
 
-      <button type="submit">{step < 2 ? 'Next' : 'Send'}</button>
+      <button type="submit">{step < 2 ? "Next" : "Send"}</button>
     </form>
   );
 }
