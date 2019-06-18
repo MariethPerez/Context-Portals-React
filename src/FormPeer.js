@@ -1,6 +1,6 @@
 import React from "react";
 import StepContext from "./context/stepPeerContext";
-import AddPeerContext from "./contexts/AddPeerContext";
+import AddPeerContext from "./context/addPeerContext";
 
 function FormPeer() {
   const step = React.useContext(StepContext);
